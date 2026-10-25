@@ -6,6 +6,8 @@ Created on Wed Oct  9 14:06:01 2024
 @author: magnuso
 """
 
+import os
+
 import numpy as np
 import scipy
 import scipy.io
@@ -175,7 +177,9 @@ def graph_cut_segmentation(im, m_chamber, s_chamber, m_background, s_background,
 if __name__ == '__main__':
 
     # load data
-    data = scipy.io.loadmat('heart_data.mat')
+    # the data is next to this script, the output images go to the assets folder
+    thisdir = os.path.dirname(os.path.realpath(__file__))
+    data = scipy.io.loadmat(os.path.join(thisdir, 'heart_data.mat'))
     data_chamber = data['chamber_values'].ravel()
     data_background = data['background_values'].ravel()
     im = data['im']
@@ -204,7 +208,7 @@ if __name__ == '__main__':
     for a in ax:
         a.axis('off')
     plt.tight_layout()
-    plt.savefig('task2_nu_comparison.png', dpi=80)
+    plt.savefig(os.path.join(thisdir, 'assets', 'task2_nu_comparison.png'), dpi=80)
     plt.show()
 
     # Final result with the chosen weight
@@ -222,5 +226,5 @@ if __name__ == '__main__':
     for a in ax:
         a.axis('off')
     plt.tight_layout()
-    plt.savefig('task2_result.png', dpi=100)
+    plt.savefig(os.path.join(thisdir, 'assets', 'task2_result.png'), dpi=100)
     plt.show()

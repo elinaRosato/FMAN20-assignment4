@@ -7,11 +7,16 @@ Created on Fri Oct 25 10:51:35 2024
 """
 
 
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 import flip_evaluator as flip
 from skimage.metrics import structural_similarity as ssim
 from skimage.metrics import peak_signal_noise_ratio as psnr
+
+# input and output images are in the assets folder next to this script
+ASSETS = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'assets')
 
 
 
@@ -72,8 +77,8 @@ def compute_metrics(ref, test, mask):
 if __name__ == "__main__":
     # load data (plt.imread already gives floats in [0,1] for png files)
 
-    g_im = plt.imread('task1_color.png')[..., :3].astype(np.float32)
-    f_im = plt.imread('task1_org.png')[..., :3].astype(np.float32)
+    g_im = plt.imread(os.path.join(ASSETS, 'task1_color.png'))[..., :3].astype(np.float32)
+    f_im = plt.imread(os.path.join(ASSETS, 'task1_org.png'))[..., :3].astype(np.float32)
 
     f = f_im.reshape(-1, 3).astype(np.float64)
     g = g_im.reshape(-1, 3).astype(np.float64)
@@ -88,7 +93,7 @@ if __name__ == "__main__":
     f_hat = np.clip(g @ A_inv.T, 0, 1)
     f_hat_im = f_hat.reshape(g_im.shape).astype(np.float32)
 
-    plt.imsave('task1_corrected.png', f_hat_im)
+    plt.imsave(os.path.join(ASSETS, 'task1_corrected.png'), f_hat_im)
 
     fig, ax = plt.subplots(1, 3, figsize=(18, 4))
     for a, im, title in zip(ax, [g_im, f_hat_im, f_im],
@@ -97,7 +102,7 @@ if __name__ == "__main__":
         a.set_title(title)
         a.axis('off')
     plt.tight_layout()
-    plt.savefig('task1_comparison.png', dpi=100)
+    plt.savefig(os.path.join(ASSETS, 'task1_comparison.png'), dpi=100)
     plt.show()
 
     # error metrics. Uncorrupted pixels = where f is not black

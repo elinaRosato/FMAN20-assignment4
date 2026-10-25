@@ -17,7 +17,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 
-from benchmarking.benchmark_assignment3 import benchmark_assignment3
+from A4.garment_recognition_project.benchmarking.benchmark_assignment3 import benchmark_assignment3
 
 THISDIR = os.path.dirname(os.path.realpath(__file__))
 

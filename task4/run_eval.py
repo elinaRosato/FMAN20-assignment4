@@ -1,8 +1,8 @@
 import importlib, os, sys
 import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
-from benchmarking.benchmark_assignment3 import benchmark_assignment3
-from evaluate_all import evaluate, DATASETS
+from A4.garment_recognition_project.benchmarking.benchmark_assignment3 import benchmark_assignment3
+from A4.garment_recognition_project.evaluate_all import evaluate, DATASETS
 
 mod = importlib.import_module(sys.argv[1])
 cd = mod.train_classifier()

@@ -19,6 +19,6 @@ __pycache__/
 
 # Course data (about 114 MB, not my own work). Remove the leading # to leave
 # it out of the repo, and say in the README where to get it.
-# inl4_to_students/garment_recognition_project/datasets/
-# inl4_to_students/task1_color.png
-# inl4_to_students/task1_org.png
+# task4/datasets/
+# task1/assets/task1_color.png
+# task1/assets/task1_org.png

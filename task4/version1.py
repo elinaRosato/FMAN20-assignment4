@@ -15,7 +15,7 @@ from collections import deque
 import numpy as np
 from scipy import ndimage
 
-from benchmarking.benchmark_assignment3 import benchmark_assignment3
+from A4.garment_recognition_project.benchmarking.benchmark_assignment3 import benchmark_assignment3
 
 THISDIR = os.path.dirname(os.path.realpath(__file__))
 
